@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: rso-frontEnd
+  name: rso-frontend
 spec:
   replicas: 1
   selector:
@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - image: mista123/frontend-rso:latest
-          name: frontEnd
+          name: frontend
           env:
             - name: db_user
               value: postgres

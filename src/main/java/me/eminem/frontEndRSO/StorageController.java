@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.stream.Stream;
 
-@RestController("/katalog")
+@RestController
 public class StorageController {
 
     TaskService taskService;

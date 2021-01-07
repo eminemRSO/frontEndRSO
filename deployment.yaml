@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: rso-deployment
+  name: rso-frontEnd
 spec:
   replicas: 1
   selector:
@@ -13,29 +13,29 @@ spec:
         app: rso
     spec:
       containers:
-        - image: mista123/katalog-rso:latest
-          name: katalog
+        - image: mista123/frontEnd-rso:latest
+          name: frontEnd
           env:
             - name: db_user
               value: postgres
             - name: db_pw
               value: postgres
           ports:
-            - containerPort: 8087
+            - containerPort: 8090
               name: server
               protocol: TCP
           livenessProbe:
             httpGet:
-              path: /katalog/actuator/health
+              path: /actuator/health
               port: server
-            initialDelaySeconds: 10
-            periodSeconds: 3
+            initialDelaySeconds: 20
+            periodSeconds: 5
           readinessProbe:
             httpGet:
-              path: /katalog/actuator/health
+              path: /actuator/health
               port: server
-            initialDelaySeconds: 10
-            periodSeconds: 3
+            initialDelaySeconds: 20
+            periodSeconds: 5
 
 ---
 
@@ -46,7 +46,7 @@ metadata:
 spec:
   type: LoadBalancer
   ports:
-    - port: 8087
+    - port: 8090
       protocol: TCP
       targetPort: server
   selector:

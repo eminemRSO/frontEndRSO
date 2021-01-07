@@ -1,7 +1,7 @@
 server:
   servlet:
-    context-path: /katalog
-  port: 8087
+    context-path: /
+  port: 8090
 
 spring:
   datasource:

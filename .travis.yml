@@ -18,7 +18,7 @@ before_install:
 
 env:
   global:
-    - DOCKER_IMAGE=mista123/frontEnd-rso
+    - DOCKER_IMAGE=mista123/frontend-rso
 
 script:
   - ./gradlew bootJar

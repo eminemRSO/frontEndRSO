@@ -13,7 +13,7 @@ spec:
         app: rso
     spec:
       containers:
-        - image: mista123/frontEnd-rso:latest
+        - image: mista123/frontend-rso:latest
           name: frontEnd
           env:
             - name: db_user

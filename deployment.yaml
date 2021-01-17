@@ -6,11 +6,11 @@ spec:
   replicas: 1
   selector:
     matchLabels:
-      app: rso
+      app: rso-frontend
   template:
     metadata:
       labels:
-        app: rso
+        app: rso-frontend
     spec:
       containers:
         - image: mista123/frontend-rso:latest
@@ -42,7 +42,7 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: rso
+  name: rso-frontend
 spec:
   type: LoadBalancer
   ports:
@@ -50,4 +50,4 @@ spec:
       protocol: TCP
       targetPort: server
   selector:
-    app: rso
+    app: rso-frontend

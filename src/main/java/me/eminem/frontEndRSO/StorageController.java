@@ -24,4 +24,9 @@ public class StorageController {
     public Stream<TaskDTO> getAllTasks(){
         return taskService.getAllTasks().stream().map(task -> modelMapper.map(task,TaskDTO.class));
     }
+
+    @GetMapping(path="/UI")
+    public String UI(){
+        return "nek tekst haha kul";
+    }
 }

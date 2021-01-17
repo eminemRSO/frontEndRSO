@@ -34,7 +34,7 @@ public class StorageController {
 
     @GetMapping(path="/UI")
     public String UI(){
-        return "nek tekst haha kul";
+        return "nek tekst haha kul 2 ";
     }
     @GetMapping(path="/UI2")
     public String UI2(){

@@ -29,4 +29,13 @@ public class StorageController {
     public String UI(){
         return "nek tekst haha kul";
     }
+    @GetMapping(path="/UI2")
+    public String UI2(){
+        return "<p id=\"demo\" onclick=\"myFunction()\">Click me to change my text color.</p>"
+            .concat("<script>")
+            .concat("function myFunction() {")
+            .concat("document.getElementById(\"demo\").style.color = \"red\";")
+            .concat("}")
+            .concat("</script>");
+    }
 }

@@ -47,12 +47,12 @@ public class StorageController {
     }
     @GetMapping(path="/UI3")
     public String UI3() throws IOException {
+        //tole ne deluje v containerju zaradi nekega razloga
+        //ClassLoader classLoader = getClass().getClassLoader();
+        //File file = new File(classLoader.getResource("spletna_stran.txt").getFile());
 
-        ClassLoader classLoader = getClass().getClassLoader();
-        File file = new File(classLoader.getResource("spletna_stran.txt").getFile());
-
-        //String path  ="src/test/resources/spletna_stran.txt";
-        //File file = new File(path);
+        String path  ="src/main/resources/spletna_stran.txt";
+        File file = new File(path);
         StringBuilder fileContents = new StringBuilder((int)file.length());
 
         try (Scanner scanner = new Scanner(file)) {

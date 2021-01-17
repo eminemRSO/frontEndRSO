@@ -45,13 +45,20 @@ public class StorageController {
             .concat("}")
             .concat("</script>");
     }
+
+    @GetMapping(path="/UI_debug")
+    public String UI_debug()throws IOException {
+        return "karkol";
+    }
+
     @GetMapping(path="/UI3")
     public String UI3() throws IOException {
         //tole ne deluje v containerju zaradi nekega razloga
         //ClassLoader classLoader = getClass().getClassLoader();
         //File file = new File(classLoader.getResource("spletna_stran.txt").getFile());
 
-        String path  ="src/main/resources/spletna_stran.txt";
+        String path  ="src"+ File.separator +"main"+ File.separator +"resources"+ File.separator +"spletna_stran.txt";
+
         File file = new File(path);
         StringBuilder fileContents = new StringBuilder((int)file.length());
 

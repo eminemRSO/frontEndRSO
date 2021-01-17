@@ -1,6 +1,8 @@
 package me.eminem.frontEndRSO;
 
 import org.modelmapper.ModelMapper;
+import org.springframework.core.io.ClassPathResource;
+import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -57,16 +59,24 @@ public class StorageController {
         //ClassLoader classLoader = getClass().getClassLoader();
         //File file = new File(classLoader.getResource("spletna_stran.txt").getFile());
 
-        String path  ="src"+ File.separator +"main"+ File.separator +"resources"+ File.separator +"spletna_stran.txt";
+        //String path  ="src"+ File.separator +"main"+ File.separator +"resources"+ File.separator +"spletna_stran.txt";
 
-        File file = new File(path);
-        StringBuilder fileContents = new StringBuilder((int)file.length());
-
-        try (Scanner scanner = new Scanner(file)) {
-            while(scanner.hasNextLine()) {
-                fileContents.append(scanner.nextLine() + System.lineSeparator());
-            }
-            return fileContents.toString();
+        String data = "";
+        ClassPathResource cpr = new ClassPathResource("spletna_stran.txt");
+        try {
+            byte[] bdata = FileCopyUtils.copyToByteArray(cpr.getInputStream());
+            data = new String(bdata, StandardCharsets.UTF_8);
+        } catch (IOException e) {
         }
+        return data;
+//        File file = new File(path);
+//        StringBuilder fileContents = new StringBuilder((int)file.length());
+//
+//        try (Scanner scanner = new Scanner(file)) {
+//            while(scanner.hasNextLine()) {
+//                fileContents.append(scanner.nextLine() + System.lineSeparator());
+//            }
+//            return fileContents.toString();
+//        }
     }
 }

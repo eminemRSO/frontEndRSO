@@ -1,0 +1,35 @@
+ <p id="demo" onclick="myFunction()">Prikaz zahtevka na rso-external</p>
+ <img id="pokeslikca" src="https://cdn.vox-cdn.com/thumbor/i3uMyX-6ja_O4A7TA7mncJxmJ3k=/0x0:1174x881/920x613/filters:focal(494x348:680x534):format(webp)/cdn.vox-cdn.com/uploads/chorus_image/image/57994057/Jessie_Wurmple.0.png" alt="W3Schools.com">
+<p id="testurl"></p>
+  <button type="button" onclick="getPicPokemon()">Pridobi sliko</button>
+
+<form id="myForm" action="/action_page.php">
+   Search for pokemon: <input type="text" name="fname" value="wurmple"><br>
+</form>
+
+ <script>
+ function myFunction() {
+   document.getElementById("demo").style.color = "red";
+ }
+ </script>
+
+ <script>
+ function getPicPokemon(){
+     var pokemon = document.getElementById('myForm').elements[0].value;
+     console.log(pokemon);
+     const Http = new XMLHttpRequest();
+     //var url2='http://localhost:8089/getPicPokemon/'.concat(pokemon);
+     var url2='http://52.146.55.220/external/getPicPokemon/'.concat(pokemon);
+     console.log(url2);
+     Http.open("GET", url2,true);
+     Http.send();
+
+     var odgovor = "odgovor ni bil sprejet";
+     Http.onreadystatechange = (e) => {
+       odgovor = Http.responseText;
+       console.log(odgovor);
+       document.getElementById("pokeslikca").src = odgovor;
+       document.getElementById("testurl").innerHTML = odgovor;
+     }
+ }
+ </script>

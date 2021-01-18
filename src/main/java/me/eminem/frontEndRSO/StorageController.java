@@ -79,4 +79,27 @@ public class StorageController {
 //            return fileContents.toString();
 //        }
     }
+
+    @GetMapping(path="/pokemonDemo")
+    public String pokedemo() throws IOException {
+        String data = "";
+        ClassPathResource cpr = new ClassPathResource("pokemon.txt");
+        try {
+            byte[] bdata = FileCopyUtils.copyToByteArray(cpr.getInputStream());
+            data = new String(bdata, StandardCharsets.UTF_8);
+        } catch (IOException e) {
+        }
+        return data;
+    }
+    @GetMapping(path="/analyticsDemo")
+    public String analyticsdemo() throws IOException {
+        String data = "";
+        ClassPathResource cpr = new ClassPathResource("analytics.txt");
+        try {
+            byte[] bdata = FileCopyUtils.copyToByteArray(cpr.getInputStream());
+            data = new String(bdata, StandardCharsets.UTF_8);
+        } catch (IOException e) {
+        }
+        return data;
+    }
 }

@@ -1,0 +1,43 @@
+ <p id="demo" style="font-size: large;" onclick="myFunction()">Prikaz merjenja metrike z analytics</p>
+ <p id="testurl" style="font-size: 50px;font-weight: bold;">0</p>
+ <button type="button" onclick="sendReq()">Pošlji zahtevek</button>
+ <button type="button" onclick="update()">Posodobi</button>
+
+
+ <script>
+ function myFunction() {
+   document.getElementById("demo").style.color = "red";
+ }
+ </script>
+
+ <script>
+ function sendReq(){
+   // const url='http://localhost:8088/emptyCall';
+    const url='http://52.146.55.220/analytics/emptyCall';
+    const Http = new XMLHttpRequest();
+    Http.open("GET", url,true);
+    Http.send();
+
+    var odgovor = "odgovor ni bil sprejet";
+    Http.onreadystatechange = (e) => {
+        odgovor = Http.responseText;
+        console.log(odgovor);
+     }
+ }
+ </script>
+  <script>
+  function update(){
+          //const url='http://localhost:8088/returnNumber';
+          const url='http://52.146.55.220/analytics/returnNumber';
+          const Http = new XMLHttpRequest();
+          Http.open("GET", url,true);
+          Http.send();
+
+          var odgovor = "odgovor ni bil sprejet";
+          Http.onreadystatechange = (e) => {
+              odgovor = Http.responseText;
+              console.log(odgovor);
+              document.getElementById("testurl").innerHTML = odgovor;
+           }
+  }
+  </script>

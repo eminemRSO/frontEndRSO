@@ -1,0 +1,48 @@
+ <img id="pokeslikca" src="https://cdn.vox-cdn.com/thumbor/i3uMyX-6ja_O4A7TA7mncJxmJ3k=/0x0:1174x881/920x613/filters:focal(494x348:680x534):format(webp)/cdn.vox-cdn.com/uploads/chorus_image/image/57994057/Jessie_Wurmple.0.png" alt="W3Schools.com">
+  <p id="demo" onclick="myFunction()">Click me to change my text color.</p>
+  <p id="demo2">A Paragraph</p>
+  <button type="button" onclick="myButton()">Try it abc</button>
+  <p id="testurl">a je url prši</p>
+  <button type="button" onclick="getPicPokemon()">Try it</button>
+
+<form id="myForm" action="/action_page.php">
+   Search for pokemon: <input type="text" name="fname" value="wurmple"><br>
+</form>
+//tuki gori je drugače še pred koncem forma za gumb<input type="submit" value="Submit">
+
+ <script>
+ function myFunction() {
+   document.getElementById("demo").style.color = "red";
+ }
+ </script>
+
+ <script>
+ function myButton() {
+   document.getElementById("demo").innerHTML = "Paragraph changed.";
+ }
+ </script>
+
+ <script>
+ function getPicPokemon(){
+     var pokemon = document.getElementById('myForm').elements[0].value;
+     console.log(pokemon);
+     const Http = new XMLHttpRequest();
+     //var url2='http://localhost:8089/getPicPokemon/'.concat(pokemon);
+     console.log(url2);
+     //const url='http://localhost:8089/getPicPokemon/wurmple';
+     //const url='https://pokeapi.co/api/v2/pokemon/wurmple';
+     Http.open("GET", url2,true);
+     Http.send();
+
+     var odgovor = "odgovor ni bil sprejet";
+     Http.onreadystatechange = (e) => {
+       odgovor = Http.responseText;
+       console.log(odgovor);
+       document.getElementById("pokeslikca").src = odgovor;
+       //$("pokeslikca").attr("src",odgovor);
+       document.getElementById("testurl").innerHTML = odgovor;
+     }
+     //return odgovor;
+     //document.getElementById("testurl").innerHTML = odgovor;
+ }
+ </script>
